@@ -143,6 +143,13 @@
             color: var(--hana-dark);
         }
 
+        .stat-box .sub-value {
+            font-size: 0.75rem;
+            color: var(--text-sub);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
         .feature-list {
             list-style: none;
             margin-top: 12px;
@@ -241,6 +248,7 @@
             padding: 12px;
             border-bottom: 1px solid var(--border-color);
             color: #334155;
+            vertical-align: middle;
         }
 
         tr:last-child td {
@@ -250,6 +258,13 @@
         .fee-highlight {
             font-weight: 700;
             color: var(--hana-green);
+        }
+
+        .remark-cell {
+            font-size: 0.8rem;
+            color: #475569;
+            line-height: 1.5;
+            background-color: #fafafa;
         }
 
         .faq-item {
@@ -315,7 +330,7 @@
         }
 
         .btn-call {
-            display inline-flex;
+            display: inline-flex;
             align-items: center;
             gap: 4px;
             background: var(--hana-green);
@@ -360,8 +375,9 @@
                     <div class="value">6,000만원</div>
                 </div>
                 <div class="stat-box">
-                    <div class="label">최장 기간 (신차)</div>
-                    <div class="value">120개월</div>
+                    <div class="label">최장 기간</div>
+                    <div class="value">120개월 (신차)</div>
+                    <div class="sub-value">60개월 (중고차)</div>
                 </div>
             </div>
             <ul class="feature-list">
@@ -386,17 +402,19 @@
                         <tr>
                             <td>36개월 ~ 59개월</td>
                             <td class="fee-highlight">1.20%</td>
-                            <td>신차/중고차</td>
+                            <td rowspan="3" class="remark-cell">
+                                • 신차 / 중고차<br>
+                                • 구입 · 대환 동일<br>
+                                • (3개월 내 완제 시 회수)
+                            </td>
                         </tr>
                         <tr>
                             <td>60개월 ~ 119개월</td>
                             <td class="fee-highlight">1.40%</td>
-                            <td>구입·대환 동일</td>
                         </tr>
                         <tr>
                             <td>120개월</td>
                             <td class="fee-highlight">1.60%</td>
-                            <td>3개월내 완제시 회수</td>
                         </tr>
                     </tbody>
                 </table>
@@ -404,7 +422,7 @@
             <p style="font-size: 0.75rem; color: #64748b; margin-top: 8px;">* 중고차 대출기간은 최장 60개월(5년)까지 적용됩니다.</p>
         </div>
 
-        <!-- 3. 오토론 딜러 제휴 협약 (독립 카드) -->
+        <!-- 3. 오토론 딜러 제휴 협약 -->
         <div class="card">
             <div class="card-title">오토론 딜러 제휴 협약</div>
             <ul class="feature-list">
