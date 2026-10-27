@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>하나은행 딜러 수수료 안내</title>
+    <style>
+        :root {
+            --hana-green: #008485;
+            --hana-dark: #005051;
+            --hana-light-bg: #f4f9f9;
+            --text-main: #222222;
+            --text-sub: #666666;
+            --border-color: #e2e8f0;
+            --accent-gold: #d97706;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: var(--text-main);
+            line-height: 1.5;
+            padding-bottom: 30px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--hana-dark), var(--hana-green));
+            color: white;
+            padding: 24px 20px 20px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0, 132, 133, 0.15);
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+        }
+
+        .date-badge {
+            font-size: 0.75rem;
+            opacity: 0.85;
+        }
+
+        .header h1 {
+            font-size: 1.45rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            letter-spacing: -0.5px;
+        }
+
+        .header p {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .notice-banner {
+            background-color: #fef2f2;
+            border-left: 4px solid #ef4444;
+            color: #991b1b;
+            padding: 10px 14px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin: 14px 16px 0;
+            border-radius: 4px;
+        }
+
+        .container {
+            padding: 16px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border: 1px solid var(--border-color);
+        }
+
+        .card-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--hana-green);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .card-title::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 16px;
+            background-color: var(--hana-green);
+            border-radius: 2px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .stat-box {
+            background: var(--hana-light-bg);
+            padding: 14px 12px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .stat-box .label {
+            font-size: 0.75rem;
+            color: var(--text-sub);
+            margin-bottom: 4px;
+        }
+
+        .stat-box .value {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--hana-dark);
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 12px;
+        }
+
+        .feature-list li {
+            font-size: 0.85rem;
+            color: #444;
+            padding: 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            color: var(--hana-green);
+            font-weight: bold;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            text-align: left;
+        }
+
+        th {
+            background: #f1f5f9;
+            color: #475569;
+            font-weight: 600;
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid var(--border-color);
+            color: #334155;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .fee-highlight {
+            font-weight: 700;
+            color: var(--hana-green);
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 12px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .faq-q {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 4px;
+        }
+
+        .faq-a {
+            font-size: 0.83rem;
+            color: #475569;
+            line-height: 1.45;
+        }
+
+        .tip-card {
+            background: #fffbeb;
+            border: 1px solid #fef3c7;
+        }
+
+        .tip-card .card-title {
+            color: var(--accent-gold);
+        }
+
+        .tip-card .card-title::before {
+            background-color: var(--accent-gold);
+        }
+
+        .contact-card {
+            background: linear-gradient(to right, #ffffff, var(--hana-light-bg));
+        }
+
+        .contact-person {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .contact-person:last-child {
+            border-bottom: none;
+        }
+
+        .contact-info .name {
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .contact-info .role {
+            font-size: 0.75rem;
+            color: var(--text-sub);
+        }
+
+        .btn-call {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: var(--hana-green);
+            color: white;
+            padding: 8px 14px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #94a3b8;
+            padding: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="header-top">
+            <span class="badge">은행권 유일 자동차금융 전문팀</span>
+            <span class="date-badge">기준일: 2026.10.27</span>
+        </div>
+        <h1>하나은행 딜러 수수료 안내</h1>
+        <p>1:1 맞춤형 전과정 피드백 시스템 제공</p>
+    </div>
+
+    <div class="notice-banner">
+        ⚠️ 본 자료는 자동차 판매 딜러 교육 및 안내용입니다. (일반 고객 배포 불가)
+    </div>
+
+    <div class="container">
+        <!-- 핵심 내용 -->
+        <div class="card">
+            <div class="card-title">오토론 핵심 내용</div>
+            <div class="grid-2">
+                <div class="stat-box">
+                    <div class="label">최대 한도</div>
+                    <div class="value">6,000만원</div>
+                </div>
+                <div class="stat-box">
+                    <div class="label">최장 기간 (신차)</div>
+                    <div class="value">120개월</div>
+                </div>
+            </div>
+            <ul class="feature-list">
+                <li>차량 무저당 제1금융권 대출</li>
+                <li>서울보증보험증권 담보 (저당 설정 / 신용한도 영향 없음)</li>
+                <li>3분 OK 간편 딜러 협약 (앱설치/회원가입 X, 신분증·명함 촬영)</li>
+                <li>재직증명서 제출 불필요 (신분증/명함 촬영 시 3분 내 완료)</li>
+            </ul>
+        </div>
+
+        <!-- 수수료 안내 -->
+        <div class="card">
+            <div class="card-title">딜러 수수료율 (Fee) 안내</div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>대출 기간</th>
+                            <th>수수료율 (Fee)</th>
+                            <th>비고</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>36개월 ~ 59개월</td>
+                            <td class="fee-highlight">1.20%</td>
+                            <td>신차/중고차</td>
+                        </tr>
+                        <tr>
+                            <td>60개월 ~ 119개월</td>
+                            <td class="fee-highlight">1.40%</td>
+                            <td>구입·대환 동일</td>
+                        </tr>
+                        <tr>
+                            <td>120개월</td>
+                            <td class="fee-highlight">1.60%</td>
+                            <td>3개월내 완제시 회수</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="font-size: 0.75rem; color: #64748b; margin-top: 8px;">* 중고차 대출기간은 최장 60개월(5년)까지 적용됩니다.</p>
+        </div>
+
+        <!-- 영업 활용 Tip -->
+        <div class="card tip-card">
+            <div class="card-title">💡 딜러 영업 활용 Tip</div>
+            <ul class="feature-list">
+                <li><strong>파이낸스 갈아타기:</strong> 고금리 캐피탈/카드사 할부 이용 고객 대상 대환 전환 추천 (신차/중고차 가능)</li>
+                <li><strong>동시 취급 가능:</strong> [하나은행 오토론 + 타사 파이낸스] 조합 가능 (차량가 이내, 오토론 우선 실행)</li>
+            </ul>
+        </div>
+
+        <!-- 필요 서류 -->
+        <div class="card">
+            <div class="card-title">신청 자격 & 필요 서류</div>
+            <p style="font-size: 0.8rem; color: #475569; margin-bottom: 10px;">
+                <strong>대출 대상:</strong> 근로자 (6개월 이상) / 개인사업자 (1년 이상)
+            </p>
+            <div class="table-container">
+                <table>
+                    <tbody>
+                        <tr>
+                            <th style="width: 30%;">고객 서류</th>
+                            <td>재직증명서 / 소득 입증 서류</td>
+                        </tr>
+                        <tr>
+                            <th>딜러 서류</th>
+                            <td>매매계약서, 견적서, 자동차등록증 사본 (사후 제출)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- FAQ -->
+        <div class="card">
+            <div class="card-title">자주 묻는 질문 (FAQ)</div>
+            <div class="faq-item">
+                <div class="faq-q">Q. 딜러 수수료(Fee) 지급 시기는?</div>
+                <div class="faq-a">A. 차량 이전등록(원부) 확인 및 대출 철회 가능 기간(실행 후 약 15일) 경과 후 입금됩니다.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Q. 모바일 딜러 제휴 대상은?</div>
+                <div class="faq-a">A. 개인 딜러 전용입니다. (법인 딜러는 영업점 서면 제휴로 진행)</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Q. 타사 할부 대환(갈아타기) 되나요?</div>
+                <div class="faq-a">A. 네, 신차/중고차 모두 고금리 파이낸스 대환이 가능합니다.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Q. 중고차 대출 시 저당 설정이 들어가나요?</div>
+                <div class="faq-a">A. 아니요, 서울보증 담보 상품으로 신차/중고차 모두 차량 저당권을 설정하지 않습니다.</div>
+            </div>
+        </div>
+
+        <!-- 담당자 문의 -->
+        <div class="card contact-card">
+            <div class="card-title">1:1 직통 문의 (자동차금융팀)</div>
+            <p style="font-size: 0.8rem; color: #64748b; margin-bottom: 12px;">
+                고객 연락처만 전달 주시면 [상담 → 심사 → 대출실행 → Fee 지급] 전 과정을 직접 전담해 드립니다.
+            </p>
+
+            <div class="contact-person">
+                <div class="contact-info">
+                    <div class="name">박창욱 팀장</div>
+                    <div class="role">하나은행 채널전략부 자동차금융팀</div>
+                </div>
+                <a href="tel:01052713150" class="btn-call">📞 전화걸기</a>
+            </div>
+
+            <div class="contact-person">
+                <div class="contact-info">
+                    <div class="name">김태유 팀장</div>
+                    <div class="role">하나은행 채널전략부 자동차금융팀</div>
+                </div>
+                <a href="tel:01062902659" class="btn-call">📞 전화걸기</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        하나은행 채널전략부 자동차금융팀
+    </div>
+
+</body>
+</html>
